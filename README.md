@@ -1,8 +1,18 @@
 # Android核心基础知识
 
-1. Android四大组件
+# 语言基础
 
-2. Activity的生命周期
+## Java
 
-   基本的生命周期的分析：[Android全面解析之Activity生命周期](https://juejin.cn/post/6892745298209308680)
+## Kotlin
+
+# 算法
+
+# 数据结构
+
+# 计算机组成原理
+
+# 其他常见问题
+
+[常见问题的思考和总结]()
 
