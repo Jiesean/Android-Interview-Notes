@@ -31,7 +31,8 @@ class SortActivity : AppCompatActivity() {
 
         mSortBinding.testSelectSortBtn.setOnClickListener {
             thread {
-                testSelectSort(SortTestHelper.generateRandomArray(100,0,10000))
+                SortTestHelper.sortAnalysis("选择排序",
+                    { testSelectSort(SortTestHelper.generateRandomArray(100,0,10000)) })
             }
         }
 
@@ -40,7 +41,7 @@ class SortActivity : AppCompatActivity() {
         }
     }
 
-    private fun testSelectSort(num:IntArray){
+    private fun testSelectSort(num:IntArray):IntArray{
         var preprareArray: IntArray = num.clone()
         Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
 
@@ -56,8 +57,7 @@ class SortActivity : AppCompatActivity() {
             }
 //            Log.d(localClassName,"数组第${i+1}次 ${Arrays.toString(preprareArray)}")
         }
-
-        Log.d(localClassName,"数组重新排序后 ${Arrays.toString(preprareArray)}")
+        return preprareArray
     }
 
 
