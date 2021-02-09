@@ -41,6 +41,7 @@ class SortActivity : AppCompatActivity() {
         }
     }
 
+    // 选择排序
     private fun testSelectSort(num:IntArray):IntArray{
         var preprareArray: IntArray = num.clone()
         Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
@@ -53,6 +54,26 @@ class SortActivity : AppCompatActivity() {
                     preprareArray[i] = preprareArray[j]
                     preprareArray[j] = temp
                 }
+
+            }
+//            Log.d(localClassName,"数组第${i+1}次 ${Arrays.toString(preprareArray)}")
+        }
+        return preprareArray
+    }
+
+    // 泛型 选择排序
+    private fun <T> testGenericsSelectSort(array:Array<T>):Array<T>{
+        var preprareArray: Array<T> = array.clone()
+        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
+
+        for (i in 0 until preprareArray.size){
+
+            for(j in i until preprareArray.size){
+//                if(preprareArray[i] > preprareArray[j]){
+//                    var temp = preprareArray[i]
+//                    preprareArray[i] = preprareArray[j]
+//                    preprareArray[j] = temp
+//                }
 
             }
 //            Log.d(localClassName,"数组第${i+1}次 ${Arrays.toString(preprareArray)}")
