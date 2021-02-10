@@ -23,5 +23,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_select_sort_btn"
         android:text="基于泛型的选择排序"/>
+    <Button
+        android:id="@+id/test_insertion_sort_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_generics_select_sort_btn"
+        android:text="插入排序"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

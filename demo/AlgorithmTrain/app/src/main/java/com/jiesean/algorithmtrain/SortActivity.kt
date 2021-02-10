@@ -32,12 +32,19 @@ class SortActivity : AppCompatActivity() {
         mSortBinding.testSelectSortBtn.setOnClickListener {
             thread {
                 SortTestHelper.sortAnalysis("选择排序",
-                    { testSelectSort(SortTestHelper.generateRandomArray(100,0,10000)) })
+                    { testSelectSort(SortTestHelper.generateRandomArray(100000,0,10000)) })
             }
         }
 
         mSortBinding.testGenericsSelectSortBtn.setOnClickListener {
             //To do
+        }
+
+        mSortBinding.testInsertionSortBtn.setOnClickListener {
+            thread {
+                SortTestHelper.sortAnalysis("插入排序",
+                    { testInsertionSort(SortTestHelper.generateRandomArray(100000,0,10000)) })
+            }
         }
     }
 
@@ -64,7 +71,7 @@ class SortActivity : AppCompatActivity() {
     // 泛型 选择排序
     private fun <T> testGenericsSelectSort(array:Array<T>):Array<T>{
         var preprareArray: Array<T> = array.clone()
-        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
+//        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
 
         for (i in 0 until preprareArray.size){
 
@@ -77,6 +84,29 @@ class SortActivity : AppCompatActivity() {
 
             }
 //            Log.d(localClassName,"数组第${i+1}次 ${Arrays.toString(preprareArray)}")
+        }
+        return preprareArray
+    }
+
+    // 插入排序
+    private fun testInsertionSort(num:IntArray):IntArray{
+        var preprareArray: IntArray = num.clone()
+//        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
+
+        //使用空间换时间，准备一个数组，将之前数组
+        var temp: Int = 0
+        for (i in 1 until preprareArray.size){
+            //遍历每个元素，将每个元素插入到前面排好序的位置
+            for (j in 0..i-1 ){
+                if(preprareArray[j] > preprareArray[i]){
+                    temp = preprareArray[i]
+                    for(z in (i-1)..j){
+                        preprareArray[z+1] = preprareArray[z]
+                    }
+
+                }
+            }
+
         }
         return preprareArray
     }

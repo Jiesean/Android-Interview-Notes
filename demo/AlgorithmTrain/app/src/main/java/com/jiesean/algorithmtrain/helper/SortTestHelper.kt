@@ -24,7 +24,7 @@ object SortTestHelper {
         var costTime = System.currentTimeMillis() - startTime
 
         Log.d(javaClass.simpleName,"${sortName} end , isSorted = ${isSorted(resultArrags)},cost = ${costTime} ms")
-        Log.d(javaClass.simpleName,"${sortName} end , result = ${Arrays.toString(resultArrags)}")
+//        Log.d(javaClass.simpleName,"${sortName} end , result = ${Arrays.toString(resultArrags)}")
     }
 
     //判断数组是否是从小到大有序的
