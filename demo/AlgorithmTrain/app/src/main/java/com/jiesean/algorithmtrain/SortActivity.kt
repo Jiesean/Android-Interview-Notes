@@ -47,6 +47,14 @@ class SortActivity : AppCompatActivity() {
                     { testInsertionSort(SortTestHelper.generateNearlySortedRandomArray(100000,0,10000,10)) })
             }
         }
+        mSortBinding.testBubbleSortBtn.setOnClickListener {
+            thread {
+                SortTestHelper.sortAnalysis("冒泡排序",
+                    {
+                        testBubbleSort(SortTestHelper.generateRandomArray(10000,0,10000))
+                    })
+            }
+        }
     }
 
     // 选择排序
@@ -139,6 +147,30 @@ class SortActivity : AppCompatActivity() {
                     break
                 }
             }
+        }
+        return preprareArray
+    }
+
+    // 冒泡排序
+    private fun testBubbleSort(num:IntArray):IntArray{
+        var preprareArray: IntArray = num.clone()
+//        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
+
+        var isNoSwap = true
+        for (i in (preprareArray.size-2) downTo 1){
+            for(j in 0..i){
+                if (preprareArray[j] > preprareArray[j + 1]){
+                    var temp = preprareArray[j]
+                    preprareArray[j] = preprareArray[j + 1]
+                    preprareArray[j + 1] = temp
+                    isNoSwap = false
+                }
+            }
+            //如果某次冒泡没有进行任何的数据交换，说明其后元素已经有序，则可以直接跳出不需要继续进行冒泡
+            if(isNoSwap){
+                break
+            }
+//            Log.d(localClassName,"数组第${i+1}次 ${Arrays.toString(preprareArray)}")
         }
         return preprareArray
     }
