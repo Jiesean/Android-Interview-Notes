@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.graphics.translationMatrix
 import com.jiesean.algorithmtrain.databinding.ActivitySortBinding
 import com.jiesean.algorithmtrain.helper.SortTestHelper
 import java.util.*
@@ -43,7 +44,7 @@ class SortActivity : AppCompatActivity() {
         mSortBinding.testInsertionSortBtn.setOnClickListener {
             thread {
                 SortTestHelper.sortAnalysis("插入排序",
-                    { testInsertionSort(SortTestHelper.generateRandomArray(100000,0,10000)) })
+                    { testInsertionSort(SortTestHelper.generateNearlySortedRandomArray(100000,0,10000,10)) })
             }
         }
     }
@@ -113,6 +114,7 @@ class SortActivity : AppCompatActivity() {
 
         //实现2：
         //i位置元素和前一个对比，比前一个大则不移动，否则交换，直到交换到合适的位置
+        /*
         for(i in 1 until preprareArray.size){
             for(j in i downTo 1){
                 if(preprareArray[j] < preprareArray[j - 1]) {
@@ -121,6 +123,21 @@ class SortActivity : AppCompatActivity() {
                     preprareArray[j] = preprareArray[j - 1]
                     preprareArray[j - 1] = temp
                 }else break
+            }
+        }
+         */
+
+        //实现3:
+        //每次swap操作需要三次copy, 优化为每次只需要一次copy
+        for(i in 1 until preprareArray.size){
+            var temp = preprareArray[i]
+            for(j in i downTo 1){
+                if(preprareArray[j - 1] > temp) {
+                    preprareArray[j] = preprareArray[j -1]
+                }else {
+                    preprareArray[j] = temp
+                    break
+                }
             }
         }
         return preprareArray
