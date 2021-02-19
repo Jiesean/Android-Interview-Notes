@@ -16,6 +16,27 @@ object SortTestHelper {
         return arr
     }
 
+    //生成n个接近有序的随机数组，随机times次
+    fun generateNearlySortedRandomArray(length:Int = 100, rangeL:Int = 0, rangeR:Int = 100, times:Int = 10):IntArray{
+        var arr = IntArray(length)
+        for(i in 0 until length){
+            arr[i] = i
+        }
+
+        for(j in 0..times){
+            var moveX = (0..length).random()
+            var moveY = (0..length).random()
+            var temp = arr[moveX]
+            arr[moveX] = arr[moveY]
+            arr[moveY] = temp
+
+        }
+
+        Log.e(javaClass.simpleName,"生成的接近有序的数组，是有序的吗 = ${isSorted(arr)}")
+
+        return arr
+    }
+
     //测试各种排序函数的性能
     fun sortAnalysis(sortName:String,sort:() -> IntArray){
         Log.d(javaClass.simpleName,"${sortName} start")
