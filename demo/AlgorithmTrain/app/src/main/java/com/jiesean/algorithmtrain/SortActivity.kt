@@ -51,7 +51,7 @@ class SortActivity : AppCompatActivity() {
     // 选择排序
     private fun testSelectSort(num:IntArray):IntArray{
         var preprareArray: IntArray = num.clone()
-        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
+//        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
 
         for (i in 0 until preprareArray.size){
 
@@ -93,7 +93,8 @@ class SortActivity : AppCompatActivity() {
         var preprareArray: IntArray = num.clone()
 //        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
 
-        //使用空间换时间，准备一个数组，将之前数组
+        //实现1：找到应该插入的位置，将该位置到i位置的元素往后移动一位，然后将i放在应该插入的位置
+        /*
         var temp: Int = 0
         for (i in 1 until preprareArray.size){
             //遍历每个元素，将每个元素插入到前面排好序的位置
@@ -107,6 +108,20 @@ class SortActivity : AppCompatActivity() {
                 }
             }
 
+        }
+         */
+
+        //实现2：
+        //i位置元素和前一个对比，比前一个大则不移动，否则交换，直到交换到合适的位置
+        for(i in 1 until preprareArray.size){
+            for(j in i downTo 1){
+                if(preprareArray[j] < preprareArray[j - 1]) {
+                    //交换
+                    var temp = preprareArray[j]
+                    preprareArray[j] = preprareArray[j - 1]
+                    preprareArray[j - 1] = temp
+                }else break
+            }
         }
         return preprareArray
     }
