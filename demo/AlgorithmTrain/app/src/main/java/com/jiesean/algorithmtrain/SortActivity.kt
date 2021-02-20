@@ -55,6 +55,15 @@ class SortActivity : AppCompatActivity() {
                     })
             }
         }
+        mSortBinding.testShellSortBtn.setOnClickListener {
+            thread {
+                SortTestHelper.sortAnalysis("希尔排序",
+                    {
+                        testShellSort(SortTestHelper.generateRandomArray(10000,0,10000))
+                    }
+                )
+            }
+        }
     }
 
     // 选择排序
@@ -175,5 +184,29 @@ class SortActivity : AppCompatActivity() {
         return preprareArray
     }
 
+    //希尔排序
+    private fun testShellSort(num:IntArray):IntArray{
+        var preprareArray: IntArray = num.clone()
+//        Log.d(localClassName,"数组排序前 ${Arrays.toString(preprareArray)}")
+
+        var gap = preprareArray.size/2
+        while(gap >= 1){
+            for(i in gap..(preprareArray.size-1)){
+                var temp = preprareArray[i]
+                var j = i - gap
+                while(j>= 0 && preprareArray[j] > temp){
+                    preprareArray[j + gap] = preprareArray[j]
+                    j= j - gap
+                }
+                preprareArray[j + gap] = temp
+            }
+
+            gap = gap /2
+//            Log.e(localClassName,"testShellSort gap = ${gap}")
+        }
+
+        return preprareArray
+
+    }
 
 }
