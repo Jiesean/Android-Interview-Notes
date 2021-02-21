@@ -235,13 +235,22 @@ object Sort {
     private fun quickSort(num: IntArray,l: Int,r: Int){
         if(l >= r) return
 
-        var index = quictPartition(num,l,r)
+        var index = quickPartition(num,l,r)
         quickSort(num,l,index-1)
         quickSort(num,index+1,r)
     }
 
     //该过程使得[l,index-1]<=index元素，[index+1,r]> index元素
-    private fun quictPartition(num: IntArray, l: Int, r: Int): Int {
+    //如果每次quickPatition都选择第一个元素作为标定元素，那么在近乎有序的数组的排序过程中
+    //快速排序，每次partition的结果就是，小于标定元素的数组为空，全部在大于标定元素的数组中
+    //这样需要partition n层，每层需要n次处理，quick sorttui退化为n^2的算法
+    //解决办法即为选择标定元素的时候改为随机选择，优化1
+    private fun quickPartition(num: IntArray, l: Int, r: Int): Int {
+        //优化1 start
+        var index = (l..r).random()
+        swapValue(num,l,index)
+        //优化1 end
+
         var i = l+1
         var j = r
         while (j>i){
