@@ -55,5 +55,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_shell_sort_btn"
         android:text="归并排序"/>
+    <Button
+        android:id="@+id/test_quick_sort_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_merge_sort_btn"
+        android:text="快速排序"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

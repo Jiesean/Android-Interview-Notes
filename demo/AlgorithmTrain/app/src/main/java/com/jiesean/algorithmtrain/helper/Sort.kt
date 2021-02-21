@@ -1,5 +1,6 @@
 package com.jiesean.algorithmtrain.helper
 
+import java.util.Collections.swap
 import kotlin.math.min
 
 /**
@@ -220,5 +221,49 @@ object Sort {
         }
 
         return  prepareArray
+    }
+
+    fun testQuickSort(num: IntArray):IntArray{
+        var prepareArray:IntArray = num.clone()
+
+        quickSort(prepareArray,0,prepareArray.size-1)
+
+        return prepareArray
+    }
+
+    //对[l,r]进行排序
+    private fun quickSort(num: IntArray,l: Int,r: Int){
+        if(l >= r) return
+
+        var index = quictPartition(num,l,r)
+        quickSort(num,l,index-1)
+        quickSort(num,index+1,r)
+    }
+
+    //该过程使得[l,index-1]<=index元素，[index+1,r]> index元素
+    private fun quictPartition(num: IntArray, l: Int, r: Int): Int {
+        var i = l+1
+        var j = r
+        while (j>i){
+            if(num[i] <= num[l]){
+                i++
+            }else{
+                swapValue(num,i,j)
+                j--
+            }
+        }
+        if (num[i] > num[l]){
+            swapValue(num,i-1,l)
+            return i-1
+        }else{
+            swapValue(num,i,l)
+            return i
+        }
+    }
+
+    private fun swapValue(num: IntArray, i: Int, j: Int) {
+        var temp = num[i]
+        num[i] = num[j]
+        num[j] = temp
     }
 }

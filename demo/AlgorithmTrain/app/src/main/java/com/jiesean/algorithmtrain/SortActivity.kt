@@ -76,6 +76,14 @@ class SortActivity : AppCompatActivity() {
                     })
             }
         }
+        mSortBinding.testQuickSortBtn.setOnClickListener {
+            thread {
+                SortTestHelper.sortAnalysis("快速排序",
+                    {
+                        Sort.testQuickSort(SortTestHelper.generateRandomArray(10000,0,10000))
+                    })
+            }
+        }
     }
 
 
