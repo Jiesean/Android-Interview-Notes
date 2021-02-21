@@ -1,5 +1,7 @@
 package com.jiesean.algorithmtrain.helper
 
+import kotlin.math.min
+
 /**
  * @author Wangjie
  * @description:
@@ -201,5 +203,22 @@ object Sort {
             }
         }
 
+    }
+
+    //使用迭代的方法实现归并排序
+    fun testInterationMergeSort(num: IntArray):IntArray{
+        var prepareArray:IntArray = num.clone()
+
+        var gap = 1
+        while (gap <= prepareArray.size){
+            for (i in 0..(prepareArray.size-gap) step (gap+gap)){
+                //归并[i,i+gap-1]和[i+gap,i+gap+gap-1]
+                merge(num,i,i+gap-1, min(i+gap+gap-1,prepareArray.size-1))
+            }
+
+            gap += gap
+        }
+
+        return  prepareArray
     }
 }

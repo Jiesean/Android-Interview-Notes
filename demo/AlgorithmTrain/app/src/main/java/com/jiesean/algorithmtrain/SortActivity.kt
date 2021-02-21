@@ -71,7 +71,7 @@ class SortActivity : AppCompatActivity() {
             thread {
                 SortTestHelper.sortAnalysis("归并排序",
                     {
-                        Sort.testMergeSort(SortTestHelper.generateRandomArray(10000,0,10000))
+                        Sort.testInterationMergeSort(SortTestHelper.generateRandomArray(10000,0,10000))
 
                     })
             }
