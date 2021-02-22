@@ -275,4 +275,92 @@ object Sort {
         num[i] = num[j]
         num[j] = temp
     }
+
+
+    //在上述 quickSort中还存在一个问题，即当存在大量重复数据的时候，划分的两个part也会极不平衡，这种情况下也会导致算法退化为n^2
+    //为了优化这种情况，我们使用的思路是左边遇到大于标定元素的时候停下来，右边遇到小于标定元素的时候停下，然后交换元素，继续上述过程，
+    //这个过程中会将等于标定元素的数据相对均匀的分配到两边
+    fun testQuickSort2(num: IntArray):IntArray{
+        var prepareArray:IntArray = num.clone()
+
+        quickSort2(prepareArray,0,prepareArray.size-1)
+
+        return prepareArray
+    }
+
+    //对[l,r]进行排序
+    private fun quickSort2(num: IntArray,l: Int,r: Int){
+        if(l >= r) return
+
+        var index = quickPartition2(num,l,r)
+        quickSort2(num,l,index-1)
+        quickSort2(num,index+1,r)
+    }
+
+    private fun quickPartition2(num: IntArray, l: Int, r: Int): Int {
+        //优化1 start
+        var index = (l..r).random()
+        swapValue(num,l,index)
+        //优化1 end
+
+        var i = l + 1
+        var j = r
+        while (true){
+            while (i<= j && num[i]<num[l]) i++
+            while (j>= l+1 && num[j]>num[l]) j--
+            if(i>j) break
+            swapValue(num,i,j)
+            i++
+            j--
+        }
+
+        swapValue(num,j,l)
+        return j
+    }
+
+
+    //3路快速排序
+    fun testQuickSort3(num: IntArray):IntArray{
+        var prepareArray:IntArray = num.clone()
+
+        quickSort3(prepareArray,0,prepareArray.size-1)
+
+        return prepareArray
+    }
+
+    //对[l,r]进行排序
+    private fun quickSort3(num: IntArray,l: Int,r: Int){
+        if(l >= r) return
+
+        //小于区间[l+1,lt]
+        //等于区间[lt+1,i-1]
+        //大于区间[gt,r]
+        //优化1 start
+        var index = (l..r).random()
+        swapValue(num,l,index)
+        //优化1 end
+        var lt = l
+        var gt = r + 1
+        var i = l+1
+        while(true){
+            if (num[i] == num[l]) i++
+            else if(num[i] > num[l]) {
+                swapValue(num,i,gt-1)
+                gt--
+            }else{
+                swapValue(num,i,lt+1)
+                lt++
+                i++
+            }
+            if (i >= gt) break
+        }
+
+        swapValue(num,l,lt)
+
+        quickSort3(num,l,lt)
+        quickSort3(num,gt,r)
+    }
+
+
+
 }
