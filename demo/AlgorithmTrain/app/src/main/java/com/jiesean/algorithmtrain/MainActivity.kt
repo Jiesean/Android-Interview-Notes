@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
             SortActivity.start(this)
         }
 
+        mBinding.testHeapBtn.setOnClickListener {
+            HeapActivity.start(this)
+        }
     }
 
 
