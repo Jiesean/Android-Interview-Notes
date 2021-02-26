@@ -21,7 +21,7 @@ class HeapActivity : AppCompatActivity() {
 
     private lateinit var mHeapBinding:ActivityHeapBinding
 
-    private var testHeapArray:IntArray = intArrayOf(2,3,5,6,7)
+    private var testHeapArray:IntArray = intArrayOf(2,3,5,6,7,10,4)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +37,16 @@ class HeapActivity : AppCompatActivity() {
                     Log.d(javaClass.simpleName, "插入元素 = ${value}, MaxHeap size = ${heap.size()}")
                     heap.insert(value)
                 }
+                while (!heap.isEmpity()) {
+                    var value = heap.extractMax()
+                    Log.d(javaClass.simpleName, "MaxHeap最大元素 = ${value}")
+                }
+            }
+        }
+
+        mHeapBinding.testHeap2InsertBtn.setOnClickListener {
+            thread {var heap = MaxHeap(testHeapArray)
+
                 while (!heap.isEmpity()) {
                     var value = heap.extractMax()
                     Log.d(javaClass.simpleName, "MaxHeap最大元素 = ${value}")

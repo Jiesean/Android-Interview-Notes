@@ -92,6 +92,14 @@ class SortActivity : AppCompatActivity() {
                     })
             }
         }
+        mSortBinding.testHeapSortBtn.setOnClickListener {
+            thread {
+                SortTestHelper.sortAnalysis("原地堆排序",
+                {
+                    Sort.testHeapSort(SortTestHelper.generateRandomArray(10000,0,10000))
+                })
+            }
+        }
     }
 
 

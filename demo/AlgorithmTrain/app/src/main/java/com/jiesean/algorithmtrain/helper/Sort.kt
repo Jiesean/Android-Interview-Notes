@@ -1,5 +1,7 @@
 package com.jiesean.algorithmtrain.helper
 
+import android.util.Log
+import java.util.*
 import java.util.Collections.swap
 import kotlin.math.min
 
@@ -359,6 +361,47 @@ object Sort {
 
         quickSort3(num,l,lt)
         quickSort3(num,gt,r)
+    }
+
+    fun testHeapSort(num: IntArray):IntArray{
+        var prepareArray:IntArray = num.clone()
+
+        //从n/2 开始依次进行shiftDown操作，维持最大堆的定义
+        var firstPNode = (prepareArray.size-2)/2
+        for (i in firstPNode downTo 0){
+            shiftDown(prepareArray,i,prepareArray.size)
+        }
+
+        //原地排序
+        for(i in (prepareArray.size -1) downTo 1){
+            swapValue(prepareArray,0,i)
+            shiftDown(prepareArray,0,i)
+        }
+
+        return prepareArray
+    }
+
+    private fun shiftDown(num: IntArray,index:Int,size:Int){
+        var i = index
+        while (2*i + 1 < size){
+            var j = 2*i + 1
+            if(2*i + 2 < size){
+                if(num[2*i+1]>= num[2*i +2]){
+                    j = 2*i + 1
+                }else{
+                    j = 2*i + 2
+                }
+            }else{
+                j = 2*i + 1
+            }
+
+            if(num[j] > num[i]){
+                swapValue(num,i,j)
+                i = j
+            }else{
+                break
+            }
+        }
     }
 
 

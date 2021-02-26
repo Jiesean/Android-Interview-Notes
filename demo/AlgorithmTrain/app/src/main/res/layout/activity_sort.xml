@@ -79,5 +79,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_quick2_sort_btn"
         android:text="3路快速排序"/>
+    <Button
+        android:id="@+id/test_heap_sort_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_quick3_sort_btn"
+        android:text="原地堆排序"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

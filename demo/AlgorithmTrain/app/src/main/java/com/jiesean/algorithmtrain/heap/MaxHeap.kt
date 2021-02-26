@@ -8,11 +8,29 @@ import java.util.*
  * @description: 实现一个最大堆
  * @date :2021/2/23 6:12 PM
  */
-class MaxHeap(var capacity:Int){
+class MaxHeap{
     private lateinit var heapArray: IntArray
     private var count = 0
-    init {
+
+    constructor(capacity:Int){
         heapArray = IntArray(capacity + 1)
+    }
+
+    //直接插入的数组可以利用insert、extractMax对齐进行
+    constructor(array: IntArray){
+        count = array.size
+        heapArray = IntArray(count + 1)
+
+        var index = 1
+        for(value in array){
+            heapArray[index] = value
+            index ++
+        }
+
+         var firstParentNode = count/2
+         for(i in firstParentNode downTo 1){
+             shiftDown(i)
+         }
     }
 
     fun isEmpity():Boolean{
@@ -31,7 +49,7 @@ class MaxHeap(var capacity:Int){
     fun insert(num:Int){
         heapArray[count + 1] = num
         count++
-        ShiftUp(count)
+        shiftUp(count)
     }
 
     fun extractMax():Int{
@@ -48,7 +66,7 @@ class MaxHeap(var capacity:Int){
 
     }
 
-    private fun ShiftUp(index:Int){
+    private fun shiftUp(index:Int){
         var temp = index
         while (temp >1){
             if(heapArray[temp] > heapArray[temp/2]){
