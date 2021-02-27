@@ -28,6 +28,10 @@ class MainActivity : AppCompatActivity() {
         mBinding.testHeapBtn.setOnClickListener {
             HeapActivity.start(this)
         }
+
+        mBinding.testBstBtn.setOnClickListener {
+            BSTActivity.start(this)
+        }
     }
 
 
