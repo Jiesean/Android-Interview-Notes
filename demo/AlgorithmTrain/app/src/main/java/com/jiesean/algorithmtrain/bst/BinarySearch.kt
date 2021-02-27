@@ -35,4 +35,30 @@ object BinarySearch {
         return -1
     }
 
+
+    //使用递归的方式实现二分查找
+    //二分查找的前提是给定的数组为有序的
+    fun testBinarySearch2(array: IntArray,target: Int):Int{
+        var index = search(array,0, array.size -1,target )
+        return index
+    }
+
+    //在[l,r]中查找target元素
+    private fun search(array: IntArray,l:Int,r:Int,target: Int):Int {
+        var mid = l + ((r - l) shr 1)
+
+        if(l>r){
+            return -1
+        }
+
+        if (array[mid] == target) {
+            return mid
+        }
+        if (array[mid] > target) {
+            return search(array, l, mid - 1, target)
+        } else {
+            return search(array, mid + 1, r, target)
+        }
+
+    }
 }

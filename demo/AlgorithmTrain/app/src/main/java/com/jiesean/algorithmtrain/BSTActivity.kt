@@ -33,6 +33,8 @@ class BSTActivity : AppCompatActivity() {
             //测试二分查找
             Log.e(javaClass.simpleName,"测试迭代实现的二分查找9的位置 result = ${BinarySearch.testBinarySearch1(testArray,9)}")
             Log.e(javaClass.simpleName,"测试迭代实现的二分查找45的位置 result = ${BinarySearch.testBinarySearch1(testArray,45)}")
+            Log.e(javaClass.simpleName,"测试递归实现的二分查找9的位置 result = ${BinarySearch.testBinarySearch2(testArray,9)}")
+            Log.e(javaClass.simpleName,"测试递归实现的二分查找45的位置 result = ${BinarySearch.testBinarySearch2(testArray,45)}")
 
 
 
