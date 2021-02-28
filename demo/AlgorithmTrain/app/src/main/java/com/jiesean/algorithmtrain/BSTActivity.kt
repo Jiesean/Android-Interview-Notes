@@ -94,5 +94,16 @@ class BSTActivity : AppCompatActivity() {
 
             }
         }
+
+        mBstBinding.testBinarySearchTreeLevelOrderBtn.setOnClickListener {
+            thread {
+                var mBST = BST()
+                for (v in testBstArray){
+                    mBST.insert(v,3)
+                }
+
+                mBST.levelOrder()
+            }
+        }
     }
 }

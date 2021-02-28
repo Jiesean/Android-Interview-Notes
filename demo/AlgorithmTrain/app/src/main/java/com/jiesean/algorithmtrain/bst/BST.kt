@@ -1,6 +1,7 @@
 package com.jiesean.algorithmtrain.bst
 
 import android.util.Log
+import java.util.*
 
 /**
  * @author Wangjie
@@ -153,6 +154,24 @@ class BST {
         postOrder(root.lightNode)
         postOrder(root.rightNode)
         Log.e(javaClass.simpleName,"postOrder current = ${root.key}")
+    }
+
+    fun levelOrder(){
+        var queue:LinkedList<Node?> = LinkedList()
+        queue.add(root)
+
+        while (!queue.isEmpty()){
+            var node = queue.poll()
+            if (node == null) continue
+            Log.e(javaClass.simpleName,"levelOrder ${node.key}")
+            if(node.lightNode != null){
+                queue.addLast(node.lightNode)
+            }
+            if(node.rightNode != null){
+                queue.addLast(node.rightNode)
+            }
+        }
+
     }
 
 }
