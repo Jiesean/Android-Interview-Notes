@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.jiesean.algorithmtrain.bst.BST
 import com.jiesean.algorithmtrain.bst.BinarySearch
 import com.jiesean.algorithmtrain.databinding.ActivityBstBinding
 import kotlin.concurrent.thread
@@ -23,6 +24,7 @@ class BSTActivity : AppCompatActivity() {
     }
 
     private var testArray = intArrayOf(1,3,4,7,9,11,18,23,34,45,56)
+    private var testBstArray = intArrayOf(4,1,45,7,9,18,2,23,12,45,56)
     private var testFloorAndCeilArray = intArrayOf(1,3,4,7,9,9,9,9,9,9,9,9,11,18,23,34,45,56)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,6 +64,21 @@ class BSTActivity : AppCompatActivity() {
         }
 
         mBstBinding.testBinarySearchTreeBtn.setOnClickListener {
+            thread {
+                var mBST = BST()
+                for (v in testBstArray){
+                    mBST.insert(v,3)
+                }
+
+                Log.e(javaClass.simpleName,"测试二叉搜索树的插入和搜索功能，size = ${mBST.size()} ,搜索已经插入元素 45 = ${mBST.contains(45)}")
+
+                var mBST2 = BST()
+                for (v in testBstArray){
+                    mBST2.insert2(v,3)
+                }
+
+                Log.e(javaClass.simpleName,"测试二叉搜索树的插入和搜索功能，size = ${mBST2.size()} ,搜索已经插入元素 45 = ${mBST2.contains(45)}")
+            }
         }
     }
 }
