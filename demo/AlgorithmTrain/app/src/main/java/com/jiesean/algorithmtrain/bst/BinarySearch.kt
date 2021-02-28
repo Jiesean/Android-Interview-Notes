@@ -61,4 +61,40 @@ object BinarySearch {
         }
 
     }
+
+    //求有序序列中最前面的target
+    fun floor(array: IntArray,target: Int):Int{
+        var index = testBinarySearch1(array,target)
+        if(index == -1 ){
+            return index
+        }else{
+            var floor = index
+            while (floor >= 0){
+                if( floor == 0 || array[floor] > array[floor -1]){
+                    return  floor
+                }else if(array[floor] == array[floor -1]){
+                    floor --
+                }
+            }
+            return floor
+        }
+    }
+
+    //求有序序列中最后面的target
+    fun ceil(array:IntArray,target: Int):Int{
+        var index = testBinarySearch1(array,target)
+        if(index == -1 ){
+            return index
+        }else{
+            var ceil = index
+            while (ceil <= array.size -1){
+                if( ceil == array.size -1 || array[ceil] < array[ceil + 1]){
+                    return  ceil
+                }else if(array[ceil] == array[ceil +1]){
+                    ceil ++
+                }
+            }
+            return ceil
+        }
+    }
 }

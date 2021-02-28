@@ -16,5 +16,15 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <Button
+        android:id="@+id/test_binary_search_tree_btn"
+        android:text="二分查找树"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_binary_search_btn"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
