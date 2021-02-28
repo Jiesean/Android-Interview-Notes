@@ -80,5 +80,19 @@ class BSTActivity : AppCompatActivity() {
                 Log.e(javaClass.simpleName,"测试二叉搜索树的插入和搜索功能，size = ${mBST2.size()} ,搜索已经插入元素 45 = ${mBST2.contains(45)}")
             }
         }
+
+        mBstBinding.testBinarySearchTreeOrderBtn.setOnClickListener {
+            thread {
+                var mBST = BST()
+                for (v in testBstArray){
+                    mBST.insert(v,3)
+                }
+
+                mBST.preOrder()
+                mBST.inOrder()
+                mBST.postOrder()
+
+            }
+        }
     }
 }

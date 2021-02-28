@@ -110,7 +110,49 @@ class BST {
         }
     }
 
+    //前序遍历
+    fun preOrder(){
+        preOrder(root)
+    }
 
+    private fun preOrder(root:Node?){
+        if (root == null) {
+            return
+        }
 
+        preOrder(root.lightNode)
+        Log.e(javaClass.simpleName,"preOrder current = ${root.key}")
+        preOrder(root.rightNode)
+    }
+
+    //中序遍历
+    fun inOrder(){
+        inOrder(root)
+    }
+
+    private fun inOrder(root:Node?){
+        if (root == null) {
+            return
+        }
+
+        Log.e(javaClass.simpleName,"inOrder current = ${root.key}")
+        inOrder(root.lightNode)
+        inOrder(root.rightNode)
+    }
+
+    //后续遍历
+    fun postOrder(){
+        postOrder(root)
+    }
+
+    private fun postOrder(root:Node?){
+        if (root == null) {
+            return
+        }
+
+        postOrder(root.lightNode)
+        postOrder(root.rightNode)
+        Log.e(javaClass.simpleName,"postOrder current = ${root.key}")
+    }
 
 }
