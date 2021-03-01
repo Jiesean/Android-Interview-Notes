@@ -43,6 +43,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_binary_search_tree_order_btn"
         />
+    <Button
+        android:id="@+id/test_term_frequency_btn"
+        android:text="获取圣经中god的词频"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_binary_search_tree_level_order_btn"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

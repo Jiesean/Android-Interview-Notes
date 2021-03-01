@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.jiesean.algorithmtrain.bst.BST
+import com.jiesean.algorithmtrain.bst.BST2
 import com.jiesean.algorithmtrain.bst.BinarySearch
 import com.jiesean.algorithmtrain.databinding.ActivityBstBinding
+import com.jiesean.algorithmtrain.helper.FileOperations
+import java.util.*
 import kotlin.concurrent.thread
 
 
@@ -103,6 +106,32 @@ class BSTActivity : AppCompatActivity() {
                 }
 
                 mBST.levelOrder()
+            }
+        }
+
+        //测试搜索二叉树对词频的搜索结果
+        mBstBinding.testTermFrequencyBtn.setOnClickListener {
+            thread {
+                var vector = Vector<String>()
+                FileOperations.readFile(this,"bible.txt",vector)
+                Log.e(localClassName,"bibile.txt contains ${vector.size} words")
+
+                var mBST = BST2()
+                var count = 0
+                for(word in vector){
+                    var node = mBST.search(word)
+                    if (node != null) {
+                        node.value ++
+                    }else{
+                        mBST.insert(word,1)
+                    }
+                }
+
+                var node = mBST.search("god")
+                node?.let {
+                    Log.e(localClassName,"bibile.txt contains ${it.value} god")
+                }
+
             }
         }
     }
