@@ -174,4 +174,38 @@ class BST {
 
     }
 
+    //递归实现查找二叉树的最小值
+    fun minimum():Int{
+        if (count == 0) {
+            throw IndexOutOfBoundsException("二叉树中未包含任何元素")
+        }
+
+        var min = miniNode(root!!)
+        return min.key
+    }
+
+    private fun miniNode(root: Node):Node{
+        if (root.lightNode == null) return root
+        return miniNode(root.lightNode!!)
+    }
+
+    //递归实现查找二叉树的最大值
+    fun maximum():Int{
+        if (count == 0) {
+            throw IndexOutOfBoundsException("二叉树中未包含任何元素")
+        }
+
+        var maxNode= maxNode(root!!)
+        return maxNode.key
+    }
+
+    private fun maxNode(root: Node):Node{
+        if (root.rightNode == null) return root
+        return maxNode(root.rightNode!!)
+    }
+
+
+
+
+
 }

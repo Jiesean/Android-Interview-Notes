@@ -134,5 +134,15 @@ class BSTActivity : AppCompatActivity() {
 
             }
         }
+
+        mBstBinding.testMinOrMaxBtn.setOnClickListener {
+            thread {
+                var mBST = BST()
+                for (v in testBstArray){
+                    mBST.insert(v,3)
+                }
+                Log.e(javaClass.simpleName,"测试二叉搜索树的最大值最小值，min = ${mBST.minimum()} ,max = ${mBST.maximum()}")
+            }
+        }
     }
 }
