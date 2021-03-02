@@ -160,6 +160,22 @@ class BSTActivity : AppCompatActivity() {
             }
         }
 
+        mBstBinding.testRmBtn.setOnClickListener {
+            thread {
+                var mBST = BST()
+                for (v in testBstArray){
+                    mBST.insert(v,3)
+                }
+
+
+                Log.e(javaClass.simpleName,"二叉搜索树的删除最大最小值后最大值最小值，size = ${mBST.size()},min = ${mBST.minimum()} ,max = ${mBST.maximum()}")
+                mBST.remove(1)
+                mBST.remove(56)
+                Log.e(javaClass.simpleName,"二叉搜索树的删除最大最小值后最大值最小值，size = ${mBST.size()},min = ${mBST.minimum()} ,max = ${mBST.maximum()}")
+
+            }
+        }
+
 
     }
 }

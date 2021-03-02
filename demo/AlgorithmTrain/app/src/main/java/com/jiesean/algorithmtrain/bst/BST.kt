@@ -211,14 +211,18 @@ class BST {
         }
     }
 
+    // 删除掉以node为根的二分搜索树中的最小节点
+    // 返回删除节点后新的二分搜索树的根
     private fun rmMin(node:Node):Node?{
         if(node.lightNode == null){
             count --
-            if(node.rightNode != null){
-                return node.rightNode!!
-            }else{
-                return null
-            }
+//            if(node.rightNode != null){
+//                return node.rightNode!!
+//            }else{
+//                return null
+//            }
+            //上述注释代码可以优化，因为在左孩子不存在的情况下，可以不用判断右孩子直接返回
+            return node.rightNode
         }
         node.lightNode =  rmMin(node.lightNode!!)
         return node
@@ -231,6 +235,8 @@ class BST {
         }
     }
 
+    // 删除掉以node为根的二分搜索树中的最大节点
+    // 返回删除节点后新的二分搜索树的根
     private fun rmMax(node:Node): Node?{
         if(node.rightNode == null){
             count--
@@ -243,4 +249,37 @@ class BST {
         node.rightNode = rmMax(node.rightNode!!)
         return node
     }
+
+    fun remove(key: Int){
+        root = removeNode(root,key)
+    }
+
+    //删除以node为节点的二叉树中key的节点，返回新的node节点
+    private fun removeNode(node:Node?,key:Int):Node?{
+        if(node == null){
+            return null
+        }
+        if(node.key > key) {
+            node.lightNode = removeNode(node.lightNode,key)
+            return  node
+        }else if(node.key < key){
+            node.rightNode = removeNode(node.rightNode,key)
+            return node
+        }else {
+            count --
+            if(node.lightNode == null ){
+                return node.rightNode
+            }else if( node.rightNode == null){
+                return node.lightNode
+            }
+            var nodeReplace = Node(minimum(),3)
+            count++
+            nodeReplace.rightNode = rmMin(node.rightNode!!)
+            nodeReplace.lightNode = node.lightNode
+            return nodeReplace
+
+        }
+    }
+
+
 }

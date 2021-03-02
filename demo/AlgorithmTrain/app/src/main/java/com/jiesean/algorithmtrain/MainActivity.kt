@@ -32,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         mBinding.testBstBtn.setOnClickListener {
             BSTActivity.start(this)
         }
+        mBinding.testOtherTreeBtn.setOnClickListener {
+        }
+        mBinding.testUnionFindBtn.setOnClickListener {
+            UnionFindActivity.start(this)
+        }
+
     }
 
 
