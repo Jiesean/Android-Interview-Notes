@@ -144,5 +144,22 @@ class BSTActivity : AppCompatActivity() {
                 Log.e(javaClass.simpleName,"测试二叉搜索树的最大值最小值，min = ${mBST.minimum()} ,max = ${mBST.maximum()}")
             }
         }
+
+        mBstBinding.testRmMinOrMaxBtn.setOnClickListener {
+            thread {
+                var mBST = BST()
+                for (v in testBstArray){
+                    mBST.insert(v,3)
+                }
+
+                Log.e(javaClass.simpleName,"二叉搜索树的删除最大最小值后最大值最小值，min = ${mBST.minimum()} ,max = ${mBST.maximum()}")
+                mBST.rmMin()
+                mBST.rmMin()
+                mBST.rmMax()
+                Log.e(javaClass.simpleName,"二叉搜索树的删除最大最小值后最大值最小值，min = ${mBST.minimum()} ,max = ${mBST.maximum()}")
+            }
+        }
+
+
     }
 }

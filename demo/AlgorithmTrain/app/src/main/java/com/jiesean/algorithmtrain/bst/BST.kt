@@ -204,8 +204,43 @@ class BST {
         return maxNode(root.rightNode!!)
     }
 
+    //删除最小节点
+    fun rmMin(){
+        if(root != null){
+            root = rmMin(root!!)
+        }
+    }
 
+    private fun rmMin(node:Node):Node?{
+        if(node.lightNode == null){
+            count --
+            if(node.rightNode != null){
+                return node.rightNode!!
+            }else{
+                return null
+            }
+        }
+        node.lightNode =  rmMin(node.lightNode!!)
+        return node
+    }
 
+    //删除最大节点
+    fun rmMax(){
+        if(root != null){
+            root = rmMax(root!!)
+        }
+    }
 
-
+    private fun rmMax(node:Node): Node?{
+        if(node.rightNode == null){
+            count--
+            if(node.lightNode != null){
+                return node.lightNode
+            }else{
+                return null
+            }
+        }
+        node.rightNode = rmMax(node.rightNode!!)
+        return node
+    }
 }

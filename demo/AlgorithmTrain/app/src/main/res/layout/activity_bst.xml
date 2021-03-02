@@ -61,6 +61,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_term_frequency_btn"
         />
+    <Button
+        android:id="@+id/test_rm_min_or_max_btn"
+        android:text="二叉搜索树删除最大最小节点"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_min_or_max_btn"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
