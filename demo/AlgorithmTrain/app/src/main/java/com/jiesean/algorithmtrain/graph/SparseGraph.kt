@@ -7,7 +7,7 @@ import android.icu.text.Edits
  * @description:
  * @date :2021/3/3 11:55 PM
  */
-class SparseGraph(n:Int,directed:Boolean):Graph,AdjIterable<Int> {
+class SparseGraph(n:Int,directed:Boolean): Graph<Int>{
     //表示图中点的个数
     private var n:Int = 0
     //表示图中边的个数

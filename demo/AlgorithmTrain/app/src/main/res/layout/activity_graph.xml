@@ -26,4 +26,34 @@
         app:layout_constraintTop_toBottomOf="@+id/test_graph_btn"
         />
 
+    <Button
+        android:id="@+id/test_graph_reader_btn"
+        android:text="图的文件存取"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_graph_iterator_btn"
+        />
+
+    <Button
+        android:id="@+id/test_graph_dfs_btn"
+        android:text="图的深度遍历和连通变量"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_graph_reader_btn"
+        />
+
+    <Button
+        android:id="@+id/test_graph_isconnected_btn"
+        android:text="图的节点连通性"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_graph_dfs_btn"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

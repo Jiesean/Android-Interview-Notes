@@ -7,7 +7,7 @@ import java.util.*
  * @description: 使用邻接矩阵实现稠密图
  * @date :2021/3/3 3:21 PM
  */
-class DenseGraph(n:Int,directed:Boolean) :Graph,AdjIterable<Int>{
+class DenseGraph(n:Int,directed:Boolean) : Graph<Int>{
     private var n:Int = 0
     private var m:Int = 0
     private var directed = false

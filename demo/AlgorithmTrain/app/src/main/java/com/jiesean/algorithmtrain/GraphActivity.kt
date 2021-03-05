@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.jiesean.algorithmtrain.databinding.ActivityGraphBinding
+import com.jiesean.algorithmtrain.graph.Component
 import com.jiesean.algorithmtrain.graph.DenseGraph
+import com.jiesean.algorithmtrain.graph.ReadGraph
 import com.jiesean.algorithmtrain.graph.SparseGraph
 import kotlin.concurrent.thread
 
@@ -78,5 +80,51 @@ class GraphActivity : AppCompatActivity() {
             }
         }
 
+        mGraphBinding.testGraphReaderBtn.setOnClickListener {
+            thread {
+                var graph1 = DenseGraph(30,false)
+                ReadGraph.readGraph(this,graph1,"graph1.txt")
+            }
+        }
+
+        mGraphBinding.testGraphDfsBtn.setOnClickListener {
+            thread {
+                var graph1 = DenseGraph(13,false)
+                ReadGraph.readGraph(this,graph1,"graph1.txt")
+
+                Log.e(javaClass.simpleName,"图1中包含的连通分量 = ${Component(graph1).count()}")
+
+                var graph2 = SparseGraph(6,false)
+                ReadGraph.readGraph(this,graph2,"graph2.txt")
+
+                for(i in 0 until graph2.V()){
+                    var iterator = graph2.iterator(i)
+                    System.out.print("${i}连接的元素: ")
+                    var target = iterator.next()
+                    while (target != -1){
+                        System.out.print(" ${target}")
+                        target = iterator.next()
+                    }
+                    System.out.print("\n")
+                }
+
+                Log.e(javaClass.simpleName,"图2中包含的连通分量 = ${Component(graph2).count()}")
+
+                var graph3 = DenseGraph(6,false)
+                ReadGraph.readGraph(this,graph3,"graph2.txt")
+
+                Log.e(javaClass.simpleName,"图2中包含的连通分量 = ${Component(graph3).count()}")
+            }
+        }
+
+        mGraphBinding.testGraphIsconnectedBtn.setOnClickListener {
+            thread {
+                var graph2 = SparseGraph(6,false)
+                ReadGraph.readGraph(this,graph2,"graph2.txt")
+
+                Log.e(javaClass.simpleName,"图2中3,5 是否连接 = ${Component(graph2).isConnected(3,5)}")
+                Log.e(javaClass.simpleName,"图2中1,4 是否连接 = ${Component(graph2).isConnected(1,4)}")
+            }
+        }
     }
 }

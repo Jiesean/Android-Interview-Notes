@@ -5,7 +5,7 @@ package com.jiesean.algorithmtrain.graph
  * @description:
  * @date :2021/3/3 11:30 PM
  */
-interface Graph{
+interface Graph<T>{
     public fun V():Int
 
     public fun E():Int
@@ -13,4 +13,6 @@ interface Graph{
     public fun addEdge(v:Int,w:Int)
 
     public fun hasEdge(v:Int,w:Int):Boolean
+
+    fun iterator(v:Int): AdjIterator<T>
 }
