@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.jiesean.algorithmtrain.databinding.ActivityGraphBinding
-import com.jiesean.algorithmtrain.graph.Component
-import com.jiesean.algorithmtrain.graph.DenseGraph
-import com.jiesean.algorithmtrain.graph.ReadGraph
-import com.jiesean.algorithmtrain.graph.SparseGraph
+import com.jiesean.algorithmtrain.graph.*
 import kotlin.concurrent.thread
 
 class GraphActivity : AppCompatActivity() {
@@ -124,6 +121,16 @@ class GraphActivity : AppCompatActivity() {
 
                 Log.e(javaClass.simpleName,"图2中3,5 是否连接 = ${Component(graph2).isConnected(3,5)}")
                 Log.e(javaClass.simpleName,"图2中1,4 是否连接 = ${Component(graph2).isConnected(1,4)}")
+            }
+        }
+
+        mGraphBinding.testGraphPathBtn.setOnClickListener {
+            thread {
+                var graph2 = SparseGraph(6,false)
+                ReadGraph.readGraph(this,graph2,"graph2.txt")
+
+                Log.e(javaClass.simpleName,"图2中3,5 之间的路径 = ${Path(graph2,3).hasPath(5)}, path =  ${Path(graph2,3).showPath(5)}")
+                Log.e(javaClass.simpleName,"图2中0,4 之间的路径 = ${Path(graph2,0).hasPath(4)}, path =  = ${Path(graph2,0).showPath(4)}")
             }
         }
     }

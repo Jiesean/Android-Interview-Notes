@@ -55,5 +55,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/test_graph_dfs_btn"
         />
+    <Button
+        android:id="@+id/test_graph_path_btn"
+        android:text="图的节点之间路径"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_graph_isconnected_btn"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
