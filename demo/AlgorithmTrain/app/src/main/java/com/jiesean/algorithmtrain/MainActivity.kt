@@ -37,6 +37,9 @@ class MainActivity : AppCompatActivity() {
         mBinding.testUnionFindBtn.setOnClickListener {
             UnionFindActivity.start(this)
         }
+        mBinding.testGraphBtn.setOnClickListener {
+            GraphActivity.start(this)
+        }
 
     }
 

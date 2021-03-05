@@ -27,11 +27,11 @@ class UnionFindActivity : AppCompatActivity() {
         mUnionFindBinding.testUnionFindBtn.setOnClickListener {
             thread {
                 var n = 1000000
-//                var unionFind1 = UnionFind1(n)
-//                UnionFindTestHelper.testUnionFind(n,unionFind1)
-//
-//                var unionFind2 = UnionFind2(n)
-//                UnionFindTestHelper.testUnionFind(n,unionFind2)
+                var unionFind1 = UnionFind1(n)
+                UnionFindTestHelper.testUnionFind(n,unionFind1)
+
+                var unionFind2 = UnionFind2(n)
+                UnionFindTestHelper.testUnionFind(n,unionFind2)
 
                 var unionFind3 = UnionFind3(n)
                 UnionFindTestHelper.testUnionFind(n,unionFind3)
