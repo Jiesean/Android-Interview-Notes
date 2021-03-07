@@ -133,5 +133,19 @@ class GraphActivity : AppCompatActivity() {
                 Log.e(javaClass.simpleName,"图2中0,4 之间的路径 = ${Path(graph2,0).hasPath(4)}, path =  = ${Path(graph2,0).showPath(4)}")
             }
         }
+
+        mGraphBinding.testGraphShortestPathBtn.setOnClickListener {
+            thread {
+                var graph2 = SparseGraph(6,false)
+                ReadGraph.readGraph(this,graph2,"graph2.txt")
+
+                var shortestPath :ShortestPath= ShortestPath(graph2,0)
+                Log.e(javaClass.simpleName,"图2中0,4 之间的路径 = ${shortestPath.hasPath(4)}, path =  = ${shortestPath.showPath(4)}, length = ${shortestPath.length(4)}")
+
+                shortestPath.showPath(3)
+
+
+            }
+        }
     }
 }
